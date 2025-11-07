@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+@theme {
+  /* ===========================
+     🎨 Color System (Dark Theme)
+     =========================== */
+  --color-background: #0b0f17; 
+  --color-surface: #141a27;    
+  --color-text: #e6eef8;       
+  --color-muted: #9ca3af;      
+
+  /* ===========================
+     🧱 Layout Tokens
+     =========================== */
+  --radius-card: 1rem;         
+  --radius-button: 0.5rem;
+  --spacing-base: 1rem;
+
+  /* ===========================
+     ✍️ Typography
+     =========================== */
+  --font-base: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+}
+
+
+
+/* ===========================
+   🧱 Base Styles
+   =========================== */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-base);
+}
