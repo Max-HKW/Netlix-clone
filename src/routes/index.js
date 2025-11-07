@@ -21,6 +21,10 @@ const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: 'preferiti',
+                Component: Home
             }
         ]
     }
