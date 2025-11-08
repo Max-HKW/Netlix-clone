@@ -24,59 +24,61 @@ import { Bell } from 'lucide-react';
 const Header = () => {
   const location = useLocation();
   return (
-    <header className="p-4 flex items-center gap-12">
-      <div>
-        <img
-          src={logo}
-          alt="Netflix clone logo"
-          width={150}
-          height={150}
-        />
-      </div>
-      <nav>
-        <ul className="flex gap-5">
-          {links.map(({ label, to }) => {
-            const isActive = location.pathname === to;
-            return (
-              <li
-                key={to}
-                className="relative pb-1"
-              >
-                {' '}
-                {/* relative qui */}
-                <NavLink
-                  to={to}
-                  className={({ isActive: rrActive }) =>
-                    clsx(
-                      'text-gray-300 hover:text-white transition-colors duration-300',
-                      rrActive && 'text-white font-semibold'
-                    )
-                  }
+    <header className="p-4  z-50 fixed w-full md:max-w-7xl bg-transparent backdrop-blur-md">
+      <div className="flex items-center gap-12">
+        <div>
+          <img
+            src={logo}
+            alt="Netflix clone logo"
+            width={150}
+            height={150}
+          />
+        </div>
+        <nav>
+          <ul className="flex gap-5">
+            {links.map(({ label, to }) => {
+              const isActive = location.pathname === to;
+              return (
+                <li
+                  key={to}
+                  className="relative pb-1"
                 >
-                  {label}
-                  {isActive && (
-                    <motion.div
-                      layoutId="underline"
-                      className="absolute left-0 -bottom-4 h-1 bg-accent rounded-full w-full"
-                      transition={{
-                        type: 'spring',
-                        stiffness: 400,
-                        damping: 30,
-                      }}
-                    />
-                  )}
-                </NavLink>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-      <div className="ml-auto flex gap-3">
-        <Search className="text-gray-300 hover:text-white cursor-pointer" />
-        <Bell
-          fill="currentColor"
-          className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
-        />
+                  {' '}
+                  {/* relative qui */}
+                  <NavLink
+                    to={to}
+                    className={({ isActive: rrActive }) =>
+                      clsx(
+                        'text-gray-300 hover:text-white transition-colors duration-300',
+                        rrActive && 'text-white font-semibold'
+                      )
+                    }
+                  >
+                    {label}
+                    {isActive && (
+                      <motion.div
+                        layoutId="underline"
+                        className="absolute left-0 -bottom-4 h-1 bg-accent rounded-full w-full"
+                        transition={{
+                          type: 'spring',
+                          stiffness: 400,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </NavLink>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+        <div className="ml-auto flex gap-3">
+          <Search className="text-gray-300 hover:text-white cursor-pointer" />
+          <Bell
+            fill="currentColor"
+            className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
+          />
+        </div>
       </div>
     </header>
   );

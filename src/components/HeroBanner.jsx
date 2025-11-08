@@ -12,7 +12,7 @@ const HeroBanner = ({ movie }) => {
     <Link
       to={`/movie/${movie.id}`}
       aria-label={`Go to details page for ${movieTitle}`}
-      className="block mb-10"
+      className="block mb-16 absolute inset-0"
     >
       <figure className="relative h-[60vh] rounded-2xl overflow-hidden">
         <img
@@ -24,9 +24,9 @@ const HeroBanner = ({ movie }) => {
           height="1080"
         />
 
-        <figcaption className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent rounded-2xl flex items-end">
+        <figcaption className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent rounded-2xl flex items-end px-4 sm:px-6 lg:px-8 xl:px-88">
           <div className="p-8 relative z-10 text-white">
-            <h1 className="text-4xl font-bold mb-2">{movieTitle}</h1>
+            <h1 className="text-4xl font-bold mb-2 md:max-w-7xl mx-auto">{movieTitle}</h1>
             {movie.overview && (
               <p className="text-gray-300 max-w-2xl mt-4 line-clamp-3">
                 {movie.overview}
