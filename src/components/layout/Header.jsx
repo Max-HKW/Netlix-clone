@@ -47,10 +47,10 @@ const Header = () => {
                   {/* relative qui */}
                   <NavLink
                     to={to}
-                    className={({ isActive: rrActive }) =>
+                    className={({ isActive: isActive }) =>
                       clsx(
                         'text-gray-300 hover:text-white transition-colors duration-300',
-                        rrActive && 'text-white font-semibold'
+                        isActive && 'text-white font-semibold'
                       )
                     }
                   >
