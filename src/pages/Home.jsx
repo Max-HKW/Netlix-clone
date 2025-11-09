@@ -16,24 +16,30 @@ import {
  * Components
  */
 import HeroBanner from '../components/HeroBanner';
-import MovieRow from '../components/MovieRow';
+import MovieSlider from '../components/MovieSlider';
 import Loader from '../components/Loader';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { popular, topRated, status } = useSelector((state) => state.movies)
+  const { popular, topRated, status } = useSelector((state) => state.movies);
 
   useEffect(() => {
-    dispatch(fetchPopularMovies())
-    dispatch(fetchTopRatedMovies())
-  }, [dispatch])
+    dispatch(fetchPopularMovies());
+    dispatch(fetchTopRatedMovies());
+  }, [dispatch]);
 
-  if (status === 'loading') return <Loader />
+  if (status === 'loading') return <Loader />;
   return (
     <div className="mt-10 space-y-10">
-      {popular.length > 0 && <HeroBanner movie={popular[0]}/>}
-      <MovieRow title='Popolari' movies={popular}/>
-      <MovieRow title='Top rated' movies={topRated}/>
+      {popular.length > 0 && <HeroBanner movie={popular[0]} />}
+      <MovieSlider
+        title="Popolari"
+        movies={popular}
+      />
+      <MovieSlider
+        title="Top rated"
+        movies={topRated}
+      />
     </div>
   );
 };
