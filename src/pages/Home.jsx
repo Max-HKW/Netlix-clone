@@ -13,6 +13,8 @@ import {
   fetchUpcomingMovies,
 } from '../features/movies/moviesSlice';
 
+import { fetchTrendingTv } from '../features/tv/tvSlice';
+
 /**
  * Components
  */
@@ -26,10 +28,13 @@ const Home = () => {
     (state) => state.movies
   );
 
+  const { tranding } = useSelector((state) => state.tv);
+
   useEffect(() => {
     dispatch(fetchPopularMovies());
     dispatch(fetchTopRatedMovies());
     dispatch(fetchUpcomingMovies());
+    dispatch(fetchTrendingTv());
   }, [dispatch]);
 
   if (status === 'loading') return <Loader />;
@@ -47,6 +52,10 @@ const Home = () => {
       <MovieSlider
         title="In arrivo"
         movies={upcoming}
+      />
+      <MovieSlider
+        title="Serie Tv"
+        movies={tranding}
       />
     </div>
   );
