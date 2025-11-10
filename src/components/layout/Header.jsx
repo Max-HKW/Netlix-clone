@@ -73,7 +73,7 @@ const Header = () => {
         <div className="ml-auto flex gap-3">
           <button
             onClick={() => setIsSearchOpen(true)}
-            className="text-gray-300 hover:text-white transition-colors duration-300"
+            className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
           >
             <Search />
           </button>
