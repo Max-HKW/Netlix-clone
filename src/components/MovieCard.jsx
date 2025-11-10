@@ -19,20 +19,20 @@ const MovieCard = ({ movie }) => {
     >
       {/* Overlay */}
       {isHovered && (
-        <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-20 transition-opacity duration-300">
+        <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-20 transition-opacity duration-300 pointer-events-none">
           <button
             type="button"
             aria-label="Aggiungi ai preferiti"
             className="p-3 rounded-full bg-white/20 hover:bg-white/40 transition"
           >
-            <Heart className="w-8 h-8 text-white cursor-pointer" />
+            <Heart className="w-8 h-8 text-white cursor-pointer pointer-events-none" />
           </button>
         </div>
       )}
 
       {/* Link attorno a immagine + titolo */}
       <Link
-        to={`/movie/${movie.id}`}
+        to={`/film/${movie.id}`}
         aria-label={`Vai ai dettagli di ${movie.title}`}
         className="relative z-10 block"
       >

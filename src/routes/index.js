@@ -15,6 +15,7 @@ import Home from '../pages/Home';
 import Favorites from '../pages/Favorites';
 import TvSeries from '../pages/TvSeries';
 import Movies from '../pages/Movies';
+import MovieDetails from '../pages/MovieDetails';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: 'film',
         Component: Movies,
+      },
+      {
+        path: 'film/:id',
+        Component: MovieDetails,
       },
       {
         path: 'preferiti',

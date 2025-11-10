@@ -10,7 +10,7 @@ const HeroBanner = ({ movie }) => {
   const movieTitle = movie.title || movie.name;
   return (
     <Link
-      to={`/movie/${movie.id}`}
+      to={`/film/${movie.id}`}
       aria-label={`Go to details page for ${movieTitle}`}
       className="block mb-16 absolute inset-0"
     >
