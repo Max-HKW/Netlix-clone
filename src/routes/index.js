@@ -12,6 +12,7 @@ import RootLayout from "../components/layout/RootLayout";
  * Pages
  */
 import Home from "../pages/Home";
+import CategoryPage from "../pages/CategoryPage";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: 'preferiti',
                 Component: Home
+            },
+            {
+                path: ':category',
+                Component: CategoryPage
             }
         ]
     }
