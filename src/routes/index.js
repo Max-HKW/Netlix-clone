@@ -13,6 +13,7 @@ import RootLayout from "../components/layout/RootLayout";
  */
 import Home from "../pages/Home";
 import CategoryPage from "../pages/CategoryPage";
+import DetailsPage from "../pages/DetailsPage";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: ':category',
                 Component: CategoryPage
+            },
+            {
+                path: ':type/:id',
+                Component: DetailsPage
             }
         ]
     }
