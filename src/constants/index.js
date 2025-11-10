@@ -1,31 +1,11 @@
-// export const links = [
-//   {
-//     to: '/',
-//     label: 'Home',
-//   },
-//   {
-//     to: '/serie-tv',
-//     label: 'Serie Tv',
-//   },
-//   {
-//     to: '/film',
-//     label: 'Film',
-//   },
-
-//   {
-//     to: '/preferiti',
-//     label: 'La mia lista',
-//   },
-// ];
 
 // constants
 export const links = {
   navLinks: [
     { label: "Home", to: "/" },
-    { label: "Serie TV", to: "/series" },
-    { label: "Film", to: "/movies" },
-    { label: "Nuovi e Popolari", to: "/new" },
-    { label: "La Mia Lista", to: "/my-list" },
+    { label: "Serie TV", to: "/series", type: "tv" },
+    { label: "Film", to: "/movies", type: "movie" },
+    { label: "La Mia Lista", to: "/my-list", type: "all"},
   ],
   footerLinks: [
     [
