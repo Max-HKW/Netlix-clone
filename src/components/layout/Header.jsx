@@ -1,6 +1,7 @@
 /**
  * Node modules
  */
+import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
 import clsx from 'clsx';
 import { motion } from 'motion/react';
@@ -16,12 +17,18 @@ import { links } from '../../constants';
 import { logo } from '../../assets';
 
 /**
+ * Components
+ */
+import SearchBar from '../SearchBar';
+
+/**
  * Icons
  */
 import { Search, Bell } from 'lucide-react';
 
 const Header = () => {
   const location = useLocation();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   return (
     <header className="px-8 py-6 z-50 fixed w-full md:mx-auto md:max-w-7xl xl:max-w-[1700px] bg-linear-to-b from-black/80 to-black/0">
       <div className="flex items-center gap-12">
@@ -64,9 +71,16 @@ const Header = () => {
         </nav>
 
         <div className="ml-auto flex gap-3">
-          <Search className="text-gray-300 hover:text-white cursor-pointer" />
+          <button
+            onClick={() => setIsSearchOpen(true)}
+            className="text-gray-300 hover:text-white transition-colors duration-300"
+          >
+            <Search />
+          </button>
           <Bell className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer" />
         </div>
+        
+        {isSearchOpen && <SearchBar onClose={() => setIsSearchOpen(false)} />}
       </div>
     </header>
   );

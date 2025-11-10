@@ -14,6 +14,7 @@ import RootLayout from "../components/layout/RootLayout";
 import Home from "../pages/Home";
 import CategoryPage from "../pages/CategoryPage";
 import DetailsPage from "../pages/DetailsPage";
+import SearchResults from "../pages/SearchResults";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: ':type/:id',
                 Component: DetailsPage
+            },
+            {
+                path: 'search/:query',
+                Component: SearchResults
             }
         ]
     }
