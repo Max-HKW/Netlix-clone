@@ -23,6 +23,18 @@ export const tmdb = {
     return res.json();
   },
 
+  async getUpcomingMovies() {
+    const res = await fetch(
+      `${API_BASE}/movie/upcoming?language=it-IT&page=1`,
+      {
+        headers: { Authorization: `Bearer ${TOKEN}` },
+      }
+    );
+
+    if (!res.ok) throw new Error('Failed to fetch upcoming movies');
+    return res.json();
+  },
+
   async getTrending(type = 'all') {
     const res = await fetch(
       `${API_BASE}/trending/${type}/week?language=it-IT`,

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchPopularMovies,
   fetchTopRatedMovies,
+  fetchUpcomingMovies,
 } from '../features/movies/moviesSlice';
 
 /**
@@ -21,11 +22,14 @@ import Loader from '../components/Loader';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { popular, topRated, status } = useSelector((state) => state.movies);
+  const { popular, topRated, upcoming, status } = useSelector(
+    (state) => state.movies
+  );
 
   useEffect(() => {
     dispatch(fetchPopularMovies());
     dispatch(fetchTopRatedMovies());
+    dispatch(fetchUpcomingMovies());
   }, [dispatch]);
 
   if (status === 'loading') return <Loader />;
@@ -39,6 +43,10 @@ const Home = () => {
       <MovieSlider
         title="Top rated"
         movies={topRated}
+      />
+      <MovieSlider
+        title="In arrivo"
+        movies={upcoming}
       />
     </div>
   );

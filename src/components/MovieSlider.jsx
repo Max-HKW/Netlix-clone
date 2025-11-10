@@ -29,14 +29,14 @@ export default function MovieSlider({ title, movies }) {
       <div className="relative">
         <button
           ref={setPrevEl}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 bg-black/50 rounded-full hover:bg-black/70 transition"
+          className="cursor-pointer absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 bg-black/50 rounded-full hover:bg-black/70 transition"
           aria-label="Previous Slide"
         >
           <ChevronLeft className="w-8 h-8 text-accent" />
         </button>
         <button
           ref={setNextEl}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 bg-black/50 rounded-full hover:bg-black/70 transition"
+          className="cursor-pointer absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 bg-black/50 rounded-full hover:bg-black/70 transition"
           aria-label="Next Slide"
         >
           <ChevronRight className="w-8 h-8 text-accent" />
@@ -48,6 +48,7 @@ export default function MovieSlider({ title, movies }) {
             spaceBetween={16}
             slidesPerView={6}
             navigation={{ prevEl, nextEl }}
+            loop={true}
             breakpoints={{
               320: { slidesPerView: 2 },
               640: { slidesPerView: 3 },
@@ -57,7 +58,7 @@ export default function MovieSlider({ title, movies }) {
             className="group"
           >
             {movies.map((movie) => (
-              <SwiperSlide key={movie.id}>
+              <SwiperSlide key={movie.id} className='relative  group'>
                 <MovieCard movie={movie} />
               </SwiperSlide>
             ))}

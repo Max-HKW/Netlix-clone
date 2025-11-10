@@ -22,9 +22,17 @@ export const fetchTopRatedMovies = createAsyncThunk(
   }
 );
 
+export const fetchUpcomingMovies = createAsyncThunk(
+  'movies/fetchUpcoming',
+  async () => {
+    return await tmdb.getUpcomingMovies();
+  }
+);
+
 const initialState = {
   popular: [],
   topRated: [],
+  upcoming: [],
   status: 'idle',
   error: null,
 };
@@ -47,6 +55,9 @@ const moviesSlice = createSlice({
       })
       .addCase(fetchTopRatedMovies.fulfilled, (state, action) => {
         state.topRated = action.payload.results;
+      })
+      .addCase(fetchUpcomingMovies.fulfilled, (state, action) => {
+        state.upcoming = action.payload.results;
       });
   },
 });
