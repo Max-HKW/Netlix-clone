@@ -18,8 +18,7 @@ import { logo } from '../../assets';
 /**
  * Icons
  */
-import { Search } from 'lucide-react';
-import { Bell } from 'lucide-react';
+import { Search, Bell } from 'lucide-react';
 
 const Header = () => {
   const location = useLocation();
@@ -27,30 +26,21 @@ const Header = () => {
     <header className="px-8 py-6 z-50 fixed w-full md:mx-auto md:max-w-7xl xl:max-w-[1700px] bg-linear-to-b from-black/80 to-black/0">
       <div className="flex items-center gap-12">
         <div>
-          <img
-            src={logo}
-            alt="Netflix clone logo"
-            width={150}
-            height={150}
-          />
+          <img src={logo} alt="Netflix clone logo" width={150} height={150} />
         </div>
+
         <nav>
           <ul className="flex gap-5">
-            {links.map(({ label, to }) => {
+            {links.navLinks.map(({ label, to }) => {
               const isActive = location.pathname === to;
               return (
-                <li
-                  key={to}
-                  className="relative pb-1"
-                >
-                  {' '}
-                  {/* relative qui */}
+                <li key={to} className="relative pb-1">
                   <NavLink
                     to={to}
-                    className={({ isActive: isActive }) =>
+                    className={({ isActive: isNavActive }) =>
                       clsx(
                         'text-gray-300 hover:text-white transition-colors duration-300',
-                        isActive && 'text-white font-semibold'
+                        isNavActive && 'text-white font-semibold'
                       )
                     }
                   >
@@ -72,12 +62,10 @@ const Header = () => {
             })}
           </ul>
         </nav>
+
         <div className="ml-auto flex gap-3">
           <Search className="text-gray-300 hover:text-white cursor-pointer" />
-          <Bell
-            fill="currentColor"
-            className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
-          />
+          <Bell className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer" />
         </div>
       </div>
     </header>
