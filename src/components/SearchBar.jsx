@@ -22,7 +22,7 @@ const SearchBar = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-start justify-center pt-24">
+    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-start justify-center pt-24">
       <div className="w-full max-w-2xl mx-4">
         <form onSubmit={handleSubmit} className="relative">
           <input
