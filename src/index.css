@@ -7,7 +7,7 @@
   /* ===========================
       Color System (Dark Theme)
      =========================== */
-  --color-background: #0b0f17;
+  --color-background: #000;
   --color-surface: #141a27;
   --color-text: #e6eef8;
   --color-muted: #9ca3af;
@@ -35,6 +35,7 @@
     Base Styles
    =========================== */
 body {
+  /* background-color: var(--color-background); */
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-base);

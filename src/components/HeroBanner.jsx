@@ -25,7 +25,7 @@ const HeroBanner = ({ movie }) => {
         />
 
         <figcaption className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent rounded-2xl flex items-end">
-          <div className="w-full px-8 sm:px-12 lg:px-16 py-10 md:max-w-7xl md:mx-auto">
+          <div className="w-full px-4 sm:px-6 lg:px-8 py-10 md:max-w-7xl md:mx-auto">
             <h1 className="text-4xl font-bold mb-2 md:max-w-7xl mx-auto">{movieTitle}</h1>
             {movie.overview && (
               <p className="text-gray-300 max-w-2xl mt-4 line-clamp-3">
