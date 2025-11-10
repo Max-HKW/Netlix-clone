@@ -24,7 +24,7 @@ import { Bell } from 'lucide-react';
 const Header = () => {
   const location = useLocation();
   return (
-    <header className="p-4  z-50 fixed w-full md:max-w-7xl bg-transparent backdrop-blur-md">
+    <header className="p-4  z-50 fixed w-full md:max-w-7xl bg-black/35">
       <div className="flex items-center gap-12">
         <div>
           <img

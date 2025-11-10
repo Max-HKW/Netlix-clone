@@ -1,7 +1,7 @@
 /**
  * Node modules
  */
-import { useRef, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper/modules';
 
@@ -12,7 +12,7 @@ import MovieCard from './MovieCard';
 
 /**
  * Icons
- */
+ */ 
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 export default function MovieSlider({ title, movies }) {
@@ -65,5 +65,7 @@ export default function MovieSlider({ title, movies }) {
         )}
       </div>
     </section>
+
+  
   );
 }
