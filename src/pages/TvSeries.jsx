@@ -24,7 +24,7 @@ const TvSeries = () => {
   return (
     <section className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-[84px] space-y-10 p-6">
       {tranding.map((movie) => (
-        <MovieCard movie={movie} />
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </section>
   );
