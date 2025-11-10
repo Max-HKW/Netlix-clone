@@ -66,4 +66,13 @@ export const tmdb = {
     if (!res.ok) throw new Error('Failed to fetch credits');
     return res.json();
   },
+
+  async getPopularTV() {
+    const res = await fetch(`${API_BASE}/tv/popular?language=it-IT&page=1`, {
+      headers: { Authorization: `Bearer ${TOKEN}` },
+    });
+
+    if (!res.ok) throw new Error('Failed to fetch popular TV shows');
+    return res.json();
+  },
 };

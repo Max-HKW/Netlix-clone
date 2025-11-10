@@ -1,25 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
-const API_KEY = "LA_TUA_API_KEY_TMBD";
-const BASE_URL = "https://api.themoviedb.org/3";
+import { useParams } from "react-router";
+import { tmdb } from "../services/tmdb";
+import Loader from "../components/Loader";
+import MovieCard from "../components/MovieCard";
 
 const CategoryPage = () => {
-  const { category } = useParams(); // es: "tv" o "movie"
+  const { category } = useParams();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCategory = async () => {
       setLoading(true);
+      setError(null);
       try {
-        const res = await fetch(
-          `${BASE_URL}/discover/${category}?api_key=${API_KEY}&language=it-IT`
-        );
-        const data = await res.json();
+        let data;
+        if (category === "series") {
+          data = await tmdb.getPopularTV();
+        } else if (category === "movies") {
+          data = await tmdb.getPopularMovies();
+        } else {
+          throw new Error("Categoria non valida");
+        }
         setItems(data.results);
       } catch (error) {
         console.error("Errore caricamento dati:", error);
+        setError("Si è verificato un errore nel caricamento dei contenuti.");
       } finally {
         setLoading(false);
       }
@@ -28,20 +35,19 @@ const CategoryPage = () => {
     fetchCategory();
   }, [category]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader />;
+  if (error) return <div className="text-red-500 text-center p-4">{error}</div>;
 
   return (
-    <div className="p-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-      {items.map((item) => (
-        <div key={item.id} className="text-white">
-          <img
-            src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-            alt={item.title || item.name}
-            className="rounded-lg"
-          />
-          <h3 className="mt-2 text-sm">{item.title || item.name}</h3>
-        </div>
-      ))}
+    <div className="container mx-auto px-4 py-8 mt-24">
+      <h1 className="text-3xl font-bold text-white mb-6">
+        {category === "series" ? "Serie TV Popolari" : "Film Popolari"}
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {items.map((item) => (
+          <MovieCard key={item.id} movie={item} />
+        ))}
+      </div>
     </div>
   );
 };
