@@ -13,7 +13,7 @@ const MovieCard = ({ movie }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <figure
-      className="relative rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105"
+      className="relative rounded-lg overflow-hidden transition-transform duration-300 hover:scale-[1.2] hover:z-50"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
