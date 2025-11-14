@@ -34,8 +34,7 @@ const Header = () => {
 
   const location = useLocation();
   return (
-   
-     <header className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-0 transition-all duration-150">
+    <header className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-0 transition-all duration-150">
       {/* Container */}
       <div className="px-8 py-6 mx-auto max-w-7xl xl:max-w-[1700px] flex items-center justify-between gap-12">
         {/* Logo */}
@@ -50,11 +49,14 @@ const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden lg:flex text-center flex-row gap-8 items-center">
+        <ul className="hidden lg:flex text-center flex-row gap-8 items-center ">
           {links.map(({ label, to }) => {
             const isActive = location.pathname === to;
             return (
-              <li key={to} className="relative pb-1">
+              <li
+                key={to}
+                className="relative pb-1"
+              >
                 <NavLink
                   to={to}
                   className={({ isActive }) =>
@@ -69,7 +71,11 @@ const Header = () => {
                     <motion.div
                       layoutId="underline"
                       className="absolute left-0 -bottom-2 h-1 bg-accent rounded-full w-full"
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </NavLink>
@@ -86,7 +92,7 @@ const Header = () => {
             className="lg:hidden p-2 text-gray-300 hover:text-white transition-colors cursor-pointer"
             aria-label="Apri menu"
           >
-            {isOpen ? <X size={26} /> : <Menu size={26} />}
+            <Menu size={26} />
           </button>
           <Search className="text-gray-300 hover:text-white cursor-pointer" />
           <Bell className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer" />
@@ -94,39 +100,55 @@ const Header = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <ul
+      <div
         className={clsx(
-          'lg:hidden fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center gap-8 z-40 transition-transform duration-300',
-          isOpen ? 'translate-y-0 opacity-100 pointer-events-auto bg-black/80 backdrop-blur-xl' : '-translate-y-full opacity-0 pointer-events-none'
+          'lg:hidden fixed top-0 left-0 w-full h-screen  z-40 transition-transform duration-300 flex justify-center',
+          isOpen
+            ? 'translate-y-0 opacity-100 pointer-events-auto bg-black/80 backdrop-blur-xl'
+            : '-translate-y-full opacity-0 pointer-events-none'
         )}
       >
-        {links.map(({ label, to }) => {
-          const isActive = location.pathname === to;
-          return (
-            <li key={to} className="relative">
-              <NavLink
-                to={to}
-                className={({ isActive }) =>
-                  clsx(
-                    'text-gray-300 hover:text-white text-2xl transition-colors duration-300',
-                    isActive && 'text-white font-semibold'
-                  )
-                }
-                onClick={() => setIsOpen(false)} // chiudi menu al click
+        <ul className="flex flex-col items-center justify-center gap-8 relative">
+          {links.map(({ label, to }) => {
+            const isActive = location.pathname === to;
+            return (
+              <li
+                key={to}
+                className="relative"
               >
-                {label}
-                {isActive && (
-                  <motion.div
-                    layoutId="underline-mobile"
-                    className="absolute left-0 -bottom-2 h-1 bg-accent rounded-full w-full"
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  />
-                )}
-              </NavLink>
-            </li>
-          );
-        })}
-      </ul>
+                <NavLink
+                  to={to}
+                  className={({ isActive }) =>
+                    clsx(
+                      'text-gray-300 hover:text-white text-2xl transition-colors duration-300',
+                      isActive && 'text-white font-semibold'
+                    )
+                  }
+                  onClick={() => setIsOpen(false)} // chiudi menu al click
+                >
+                  {label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="underline-mobile"
+                      className="absolute left-0 -bottom-2 h-1 bg-accent rounded-full w-full"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
+        <X
+          size={26}
+          className="absolute z-1000 right-20 top-20 cursor-pointer"
+          onClick={() => setIsOpen(false)}
+        />
+      </div>
     </header>
   );
 };

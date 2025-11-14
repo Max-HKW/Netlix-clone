@@ -7,13 +7,13 @@ import { Link } from 'react-router';
 /**
  * Icons
  */
-import { Heart, PlusCircle } from 'lucide-react';
+import { PlusCircle } from 'lucide-react';
 
 const MovieCard = ({ movie }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <figure
-      className="relative rounded-lg overflow-hidden transition-transform duration-300 hover:scale-[1.2] hover:z-50"
+      className="relative rounded-lg overflow-hidden transition-transform duration-300 hover:z-50"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -25,7 +25,7 @@ const MovieCard = ({ movie }) => {
             aria-label="Aggiungi ai preferiti"
             className="p-3 rounded-full bg-white/20 hover:bg-white/40 transition"
           >
-            <Heart className="w-8 h-8 text-white cursor-pointer pointer-events-none" />
+            <PlusCircle className="w-8 h-8 text-white cursor-pointer pointer-events-none" />
           </button>
         </div>
       )}
