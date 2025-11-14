@@ -12,7 +12,7 @@ const HeroBanner = ({ movie }) => {
     <Link
       to={`/film/${movie.id}`}
       aria-label={`Go to details page for ${movieTitle}`}
-      className="block mb-16 absolute inset-0"
+      className="block mb-16 absolute inset-0 z-0"
     >
       <figure className="relative h-[60vh] rounded-2xl overflow-hidden">
         <img

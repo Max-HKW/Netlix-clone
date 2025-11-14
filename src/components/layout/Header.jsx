@@ -1,9 +1,10 @@
 /**
  * Node modules
  */
-import { NavLink, useLocation } from 'react-router';
+import { NavLink, useLocation, Link } from 'react-router';
 import clsx from 'clsx';
 import { motion } from 'motion/react';
+import { useState, useEffect } from 'react';
 
 /**
  * Constants
@@ -18,68 +19,114 @@ import { logo } from '../../assets';
 /**
  * Icons
  */
-import { Search } from 'lucide-react';
-import { Bell } from 'lucide-react';
+import { Search, Bell, Menu, X } from 'lucide-react';
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setIsOpen(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const location = useLocation();
   return (
-    <header className="px-8 py-6 z-50 fixed w-full md:mx-auto md:max-w-7xl xl:max-w-[1700px] bg-linear-to-b from-black/80 to-black/0">
-      <div className="flex items-center gap-12">
-        <div>
+   
+     <header className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-0 transition-all duration-150">
+      {/* Container */}
+      <div className="px-8 py-6 mx-auto max-w-7xl xl:max-w-[1700px] flex items-center justify-between gap-12">
+        {/* Logo */}
+        <Link to="/">
           <img
             src={logo}
             alt="Netflix clone logo"
             width={150}
             height={150}
+            className="min-w-[150px]"
           />
-        </div>
-        <nav>
-          <ul className="flex gap-5">
-            {links.map(({ label, to }) => {
-              const isActive = location.pathname === to;
-              return (
-                <li
-                  key={to}
-                  className="relative pb-1"
+        </Link>
+
+        {/* Desktop Navigation */}
+        <ul className="hidden lg:flex text-center flex-row gap-8 items-center">
+          {links.map(({ label, to }) => {
+            const isActive = location.pathname === to;
+            return (
+              <li key={to} className="relative pb-1">
+                <NavLink
+                  to={to}
+                  className={({ isActive }) =>
+                    clsx(
+                      'text-gray-300 hover:text-white transition-colors duration-300',
+                      isActive && 'text-white font-semibold'
+                    )
+                  }
                 >
-                  {' '}
-                  {/* relative qui */}
-                  <NavLink
-                    to={to}
-                    className={({ isActive: isActive }) =>
-                      clsx(
-                        'text-gray-300 hover:text-white transition-colors duration-300',
-                        isActive && 'text-white font-semibold'
-                      )
-                    }
-                  >
-                    {label}
-                    {isActive && (
-                      <motion.div
-                        layoutId="underline"
-                        className="absolute left-0 -bottom-4 h-1 bg-accent rounded-full w-full"
-                        transition={{
-                          type: 'spring',
-                          stiffness: 400,
-                          damping: 30,
-                        }}
-                      />
-                    )}
-                  </NavLink>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-        <div className="ml-auto flex gap-3">
+                  {label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="underline"
+                      className="absolute left-0 -bottom-2 h-1 bg-accent rounded-full w-full"
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Icons + Hamburger (mobile) */}
+        <div className="ml-auto flex gap-3 items-center">
+          {/* Hamburger */}
+          <button
+            onClick={() => setIsOpen((prev) => !prev)}
+            className="lg:hidden p-2 text-gray-300 hover:text-white transition-colors cursor-pointer"
+            aria-label="Apri menu"
+          >
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
           <Search className="text-gray-300 hover:text-white cursor-pointer" />
-          <Bell
-            fill="currentColor"
-            className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
-          />
+          <Bell className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer" />
         </div>
       </div>
+
+      {/* Mobile Navigation */}
+      <ul
+        className={clsx(
+          'lg:hidden fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center gap-8 z-40 transition-transform duration-300',
+          isOpen ? 'translate-y-0 opacity-100 pointer-events-auto bg-black/80 backdrop-blur-xl' : '-translate-y-full opacity-0 pointer-events-none'
+        )}
+      >
+        {links.map(({ label, to }) => {
+          const isActive = location.pathname === to;
+          return (
+            <li key={to} className="relative">
+              <NavLink
+                to={to}
+                className={({ isActive }) =>
+                  clsx(
+                    'text-gray-300 hover:text-white text-2xl transition-colors duration-300',
+                    isActive && 'text-white font-semibold'
+                  )
+                }
+                onClick={() => setIsOpen(false)} // chiudi menu al click
+              >
+                {label}
+                {isActive && (
+                  <motion.div
+                    layoutId="underline-mobile"
+                    className="absolute left-0 -bottom-2 h-1 bg-accent rounded-full w-full"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+              </NavLink>
+            </li>
+          );
+        })}
+      </ul>
     </header>
   );
 };

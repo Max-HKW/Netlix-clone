@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 /**
  * Icons
  */
-import { Heart } from 'lucide-react';
+import { Heart, PlusCircle } from 'lucide-react';
 
 const MovieCard = ({ movie }) => {
   const [isHovered, setIsHovered] = useState(false);
