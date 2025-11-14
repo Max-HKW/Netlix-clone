@@ -3,6 +3,8 @@
  */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavourites, removeFavourites } from '../features/favourites/favouritesSlice';
 
 /**
  * Services
@@ -20,6 +22,9 @@ const DetailsPage = () => {
   const [credits, setCredits] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const dispatch = useDispatch();
+  const favourites = useSelector((state) => state.favourites.list || []);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -52,6 +57,24 @@ const DetailsPage = () => {
   const director = credits?.crew?.find(person => person.job === 'Director');
   const cast = credits?.cast?.slice(0, 5) || [];
 
+  const isFavourite = details ? favourites.some((item) => item.id === details.id) : false;
+
+  const handleToggleFavourite = () => {
+    if (isFavourite) {
+      dispatch(removeFavourites(details.id));
+    } else {
+      // salva un oggetto minimale in favourites, include media type
+      dispatch(
+        addFavourites({
+          id: details.id,
+          title: details.title || details.name,
+          poster_path: details.poster_path,
+          media_type: type,
+        })
+      );
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Banner con sfondo */}
@@ -73,9 +96,36 @@ const DetailsPage = () => {
                 {details.number_of_seasons && (
                   <span>{details.number_of_seasons} Stagioni</span>
                 )}
-                <span className="px-2 py-1 bg-white/20 rounded">
-                  {details.vote_average.toFixed(1)} ★
-                </span>
+                <div className="flex items-center gap-3">
+                  <span className="px-2 py-1 bg-white/20 rounded">
+                    {details.vote_average.toFixed(1)} ★
+                  </span>
+
+                  <button
+                    onClick={handleToggleFavourite}
+                    aria-pressed={isFavourite}
+                    className={`p-2 rounded-full transition-colors duration-200 border border-transparent hover:bg-white/10 ${
+                      isFavourite ? 'bg-red-600 text-white' : 'text-white'
+                    }`}
+                    title={isFavourite ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}
+                  >
+                    {/* Use a simple heart character/icon - lucide-react Heart not imported to avoid extra import */}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill={isFavourite ? 'white' : 'none'}
+                      stroke="currentColor"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
+                        d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 10-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

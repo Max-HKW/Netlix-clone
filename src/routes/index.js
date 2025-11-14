@@ -15,6 +15,7 @@ import Home from "../pages/Home";
 import CategoryPage from "../pages/CategoryPage";
 import DetailsPage from "../pages/DetailsPage";
 import SearchResults from "../pages/SearchResults";
+import Favorites from "../pages/Favorites";
 
 const router = createBrowserRouter([
     {
@@ -26,8 +27,8 @@ const router = createBrowserRouter([
                 Component: Home
             },
             {
-                path: 'preferiti',
-                Component: Home
+                path: 'my-list',
+                Component: Favorites
             },
             {
                 path: ':category',

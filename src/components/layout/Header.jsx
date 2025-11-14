@@ -3,6 +3,7 @@
  */
 import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
+import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import { motion } from 'motion/react';
 
@@ -24,11 +25,13 @@ import SearchBar from '../SearchBar';
 /**
  * Icons
  */
-import { Search, Bell } from 'lucide-react';
+import { Search, Bookmark } from 'lucide-react';
 
 const Header = () => {
   const location = useLocation();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const favourites = useSelector((state) => state.favourites.list || []);
+  const favCount = favourites.length;
   return (
     <header className="px-8 py-6 z-50 fixed w-full md:mx-auto md:max-w-7xl xl:max-w-[1700px] bg-linear-to-b from-black/80 to-black/0">
       <div className="flex items-center gap-12">
@@ -70,14 +73,24 @@ const Header = () => {
           </ul>
         </nav>
 
-        <div className="ml-auto flex gap-3">
+        <div className="ml-auto flex items-center gap-3">
+          <NavLink to="/my-list" className="relative">
+            <div className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center p-2 rounded">
+              <Bookmark className="w-5 h-5 cursor-pointer" />
+            </div>
+            {favCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2">
+                {favCount}
+              </span>
+            )}
+          </NavLink>
+
           <button
             onClick={() => setIsSearchOpen(true)}
             className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
           >
             <Search />
           </button>
-          <Bell className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer" />
         </div>
         
         {isSearchOpen && <SearchBar onClose={() => setIsSearchOpen(false)} />}

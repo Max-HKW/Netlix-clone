@@ -4,8 +4,8 @@
 import { Link } from 'react-router';
 
 const MovieCard = ({ movie }) => {
-  // Determina se è una serie TV o un film
-  const isTV = movie.first_air_date !== undefined;
+  // Determina se è una serie TV o un film (supporta API multi-source)
+  const isTV = movie.media_type === 'tv' || movie.first_air_date !== undefined;
   const title = movie.title || movie.name;
   
   return (
