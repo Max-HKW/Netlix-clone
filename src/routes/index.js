@@ -33,10 +33,12 @@ const router = createBrowserRouter([
       {
         path: 'film',
         Component: Movies,
-      },
-      {
-        path: 'film/:id',
-        Component: MovieDetails,
+        children: [
+          {
+            path: ':id',
+            Component: MovieDetails,
+          },
+        ],
       },
       {
         path: 'preferiti',

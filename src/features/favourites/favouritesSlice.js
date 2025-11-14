@@ -27,8 +27,18 @@ const favouritesSlice = createSlice({
       state.list = state.list.filter((item) => item.id !== action.payload);
       saveFavourites(state.list);
     },
+    toggleFavourites: (state, action) => {
+      const item = action.payload;
+      const alreadyInList = state.list.some((fav) => fav.id === item.id);
+
+      if (alreadyInList) {
+        state.list = state.list.filter((fav) => fav.id !== item.id);
+      } else {
+        state.list.push(item);
+      }
+    },
   },
 });
 
-export const { addFavourites, removeFavourites } = favouritesSlice.actions;
+export const { addFavourites, removeFavourites, toggleFavourites } = favouritesSlice.actions;
 export default favouritesSlice.reducer;

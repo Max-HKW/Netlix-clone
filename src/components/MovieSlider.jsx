@@ -8,11 +8,11 @@ import { Navigation, A11y } from 'swiper/modules';
 /**
  * Components
  */
-import MovieCard from './MovieCard';
+import ItemCard from './ItemCard';
 
 /**
  * Icons
- */ 
+ */
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 export default function MovieSlider({ title, movies }) {
@@ -58,15 +58,16 @@ export default function MovieSlider({ title, movies }) {
             className="group"
           >
             {movies.map((movie) => (
-              <SwiperSlide key={movie.id} className='relative  group'>
-                <MovieCard movie={movie} />
+              <SwiperSlide
+                key={movie.id}
+                className="relative  group"
+              >
+                <ItemCard item={movie} />
               </SwiperSlide>
             ))}
           </Swiper>
         )}
       </div>
     </section>
-
-  
   );
 }

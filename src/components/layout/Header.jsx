@@ -51,7 +51,11 @@ const Header = () => {
         {/* Desktop Navigation */}
         <ul className="hidden lg:flex text-center flex-row gap-8 items-center ">
           {links.map(({ label, to }) => {
-            const isActive = location.pathname === to;
+            const isActive =
+              location.pathname === to ||
+              (to === '/film' && location.pathname.startsWith('/film/')) ||
+              (to === '/serie-tv' &&
+                location.pathname.startsWith('/serie-tv/'));
             return (
               <li
                 key={to}
@@ -95,7 +99,6 @@ const Header = () => {
             <Menu size={26} />
           </button>
           <Search className="text-gray-300 hover:text-white cursor-pointer" />
-          <Bell className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer" />
         </div>
       </div>
 
@@ -110,7 +113,11 @@ const Header = () => {
       >
         <ul className="flex flex-col items-center justify-center gap-8 relative">
           {links.map(({ label, to }) => {
-            const isActive = location.pathname === to;
+            const isActive =
+              location.pathname === to ||
+              (to === '/film' && location.pathname.startsWith('/film/')) ||
+              (to === '/serie-tv' &&
+                location.pathname.startsWith('/serie-tv/'));
             return (
               <li
                 key={to}
