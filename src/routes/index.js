@@ -16,6 +16,7 @@ import CategoryPage from "../pages/CategoryPage";
 import DetailsPage from "../pages/DetailsPage";
 import SearchResults from "../pages/SearchResults";
 import Favorites from "../pages/Favorites";
+import NotFound from "../pages/NotFound";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
                 Component: Favorites
             },
             {
+                path: 'favourites',
+                Component: Favorites
+            },
+            {
                 path: ':category',
                 Component: CategoryPage
             },
@@ -41,6 +46,10 @@ const router = createBrowserRouter([
             {
                 path: 'search/:query',
                 Component: SearchResults
+            },
+            {
+                path: '*',
+                Component: NotFound
             }
         ]
     }

@@ -2,7 +2,7 @@
  * Node modules
  */
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useLocation } from 'react-router';
 
 /**
  * Services
@@ -16,7 +16,10 @@ import Loader from '../components/Loader';
 import MovieCard from '../components/MovieCard';
 
 const SearchResults = () => {
-  const { query } = useParams();
+  const { query: paramQuery } = useParams();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const query = paramQuery || searchParams.get('q') || '';
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,6 +30,12 @@ const SearchResults = () => {
       setLoading(true);
       setError(null);
       setSuggestions([]);
+
+      if (!query) {
+        setResults([]);
+        setLoading(false);
+        return;
+      }
 
       try {
         const data = await tmdb.search(query);
@@ -55,7 +64,7 @@ const SearchResults = () => {
     };
 
     searchContent();
-  }, [query]);
+  }, [paramQuery, location.search]);
 
   if (loading) return <Loader />;
 
