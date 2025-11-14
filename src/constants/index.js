@@ -18,3 +18,21 @@ export const links = [
   },
 ];
 
+export const footerLinks = [
+  {
+    title: 'Company',
+    links: ['About', 'Jobs', 'Press', 'Blog'],
+  },
+  {
+    title: 'Support',
+    links: ['Help Center', 'Safety Center', 'Community Guidelines'],
+  },
+  {
+    title: 'Legal',
+    links: ['Terms of Use', 'Privacy Policy', 'Cookie Preferences'],
+  },
+  {
+    title: 'Connect',
+    links: ['Facebook', 'Twitter', 'Instagram'],
+  },
+];
