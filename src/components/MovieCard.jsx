@@ -50,7 +50,7 @@ const MovieCard = ({ movie }) => {
     //     </figcaption>
     //   </Link>
     // </figure>
-     <figure
+    <figure
       className="relative rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-50"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -67,7 +67,10 @@ const MovieCard = ({ movie }) => {
               console.log(`Aggiunto ai preferiti: ${movie.title}`);
             }}
           >
-            <Heart className="w-8 h-8 text-white" />
+            <Heart
+              className="w-8 h-8 text-white hover:text-pink-500 cursor-pointer transition-colors duration-150"
+              fill="currentColor"
+            />
           </button>
         </div>
       )}

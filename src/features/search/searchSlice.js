@@ -4,7 +4,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { tmdb } from '../../services/tmdb';
 
-export const seactContent = createAsyncThunk('search/fetch', async (query) => {
+export const searchContent = createAsyncThunk('search/fetch', async (query) => {
   return await tmdb.search(query);
 });
 
@@ -20,13 +20,13 @@ const searchSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(seactContent.pending, (state) => {
+      .addCase(searchContent.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(seactContent.fulfilled, (state, action) => {
+      .addCase(searchContent.fulfilled, (state, action) => {
         ((state.status = 'succeded'), (state.results = action.payload.results));
       })
-      .addCase(seactContent.rejected, (state, action) => {
+      .addCase(searchContent.rejected, (state, action) => {
         ((state.status = 'failde'), (state.error = action.error.message));
       });
   },
