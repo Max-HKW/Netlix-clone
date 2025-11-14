@@ -85,7 +85,7 @@ const MovieCard = ({ movie }) => {
           className="w-full h-auto object-cover aspect-video"
         />
 
-        <figcaption className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent py-3 text-sm text-white">
+        <figcaption className="absolute bottom-0 left-0 w-full bg-linear-to-t from-black/80 via-black/40 to-transparent py-3 text-sm text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {movie.title}
           </div>
