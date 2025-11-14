@@ -50,7 +50,7 @@ export default function MovieSlider({ title, movies }) {
             navigation={{ prevEl, nextEl }}
             loop={true}
             breakpoints={{
-              320: { slidesPerView: 2 },
+              320: { slidesPerView: 1 },
               640: { slidesPerView: 3 },
               1024: { slidesPerView: 5 },
               1440: { slidesPerView: 6 },
