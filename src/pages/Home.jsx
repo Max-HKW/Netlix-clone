@@ -21,6 +21,7 @@ import { fetchTrendingTv } from '../features/tv/tvSlice';
 import HeroBanner from '../components/HeroBanner';
 import MovieSlider from '../components/MovieSlider';
 import Loader from '../components/Loader';
+import TvSlider from '../components/TvSlider';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -53,9 +54,9 @@ const Home = () => {
         title="In arrivo"
         movies={upcoming}
       />
-      <MovieSlider
+      <TvSlider
         title="Serie Tv"
-        movies={tranding}
+        series={tranding}
       />
     </div>
   );

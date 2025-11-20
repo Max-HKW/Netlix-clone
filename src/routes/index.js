@@ -16,6 +16,7 @@ import Favorites from '../pages/Favorites';
 import TvSeries from '../pages/TvSeries';
 import Movies from '../pages/Movies';
 import MovieDetails from '../pages/MovieDetails';
+import TvDetails from '../pages/TvDetails';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,12 @@ const router = createBrowserRouter([
       {
         path: 'serie-tv',
         Component: TvSeries,
+        children: [
+          {
+            path: ':id',
+            Component: TvDetails,
+          }
+        ],
       },
       {
         path: 'film',

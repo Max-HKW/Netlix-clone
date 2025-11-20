@@ -48,3 +48,25 @@ body {
 .swiper-button-prev::after {
   display: none !important;
 }
+
+.netflix-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.netflix-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.netflix-scroll::-webkit-scrollbar-thumb {
+  background: #e50914;
+  border-radius: 4px;
+}
+
+.netflix-scroll::-webkit-scrollbar-thumb:hover {
+  background: #f6121d;
+}
+
+.netflix-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #e50914 rgba(255, 255, 255, 0.05);
+}

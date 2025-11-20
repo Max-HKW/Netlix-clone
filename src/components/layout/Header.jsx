@@ -7,6 +7,11 @@ import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 
 /**
+ * Components
+ */
+import SearchBar from '../SearchBar';
+
+/**
  * Constants
  */
 import { links } from '../../constants';
@@ -98,7 +103,7 @@ const Header = () => {
           >
             <Menu size={26} />
           </button>
-          <Search className="text-gray-300 hover:text-white cursor-pointer" />
+          <SearchBar />
         </div>
       </div>
 
