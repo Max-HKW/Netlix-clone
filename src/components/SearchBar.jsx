@@ -76,7 +76,7 @@ const SearchBar = () => {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+          className="text-gray-300 hover:text-white transition-colors cursor-pointer flex items-center justify-center"
         >
           <Search size={24} />
         </button>
