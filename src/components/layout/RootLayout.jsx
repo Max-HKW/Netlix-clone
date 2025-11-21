@@ -1,8 +1,8 @@
 /**
  * Node modules
  */
-import { Outlet } from 'react-router';
-import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
+import { Outlet, Navigate } from 'react-router';
+import { SignedIn, SignedOut, RedirectToSignUp } from '@clerk/clerk-react';
 
 /**
  * Components
@@ -12,15 +12,28 @@ import Footer from './Footer';
 
 const RootLayout = () => {
   return (
-    <SignedIn>
-      <div className="min-h-screen flex flex-col md:mx-auto md:max-w-7xl xl:max-w-[1700px]">
-        <Header />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
-    </SignedIn>
+    <>
+      <SignedIn>
+        <div className="min-h-screen flex flex-col md:mx-auto md:max-w-7xl xl:max-w-[1700px]">
+          <Header />
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      </SignedIn>
+
+      <SignedOut>
+        <Navigate
+          to="/signup"
+          replace
+        />
+
+        {/* <div className="min-h-screen flex items-center justify-center text-white">
+          Devi essere loggato per accedere a questa pagina.
+        </div>  */}
+      </SignedOut>
+    </>
   );
 };
 

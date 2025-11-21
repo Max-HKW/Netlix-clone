@@ -15,7 +15,7 @@ import styles from '../styles/SignIn.module.css';
 
 const SignUpPage = () => {
   return (
-    <div className=" relative min-h-screen bg-black flex items-center justify-center p-6">
+    <div className="relative min-h-screen bg-black flex items-center justify-center p-6">
       <figure className="absolute inset-0">
         <img
           src={bgBanner}
@@ -24,7 +24,7 @@ const SignUpPage = () => {
         />
       </figure>
       <div className="absolute inset-0 z-1 bg-linear-to-t from-black/90 to-black/75"></div>
-      <div className="z-10 mt-16">
+      <div className="z-10 mt-16 ">
         <SignUp
           path="/signup"
           signInUrl='/login'
