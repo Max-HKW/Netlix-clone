@@ -7,6 +7,7 @@ import { RouterProvider } from 'react-router';
 import { Provider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { ClerkProvider } from '@clerk/clerk-react';
+import { itIT } from '@clerk/localizations';
 
 /**
  * Store
@@ -34,7 +35,15 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <ClerkProvider
+      publishableKey={PUBLISHABLE_KEY}
+      localization={itIT}
+      afterSignOutUrl='/login'
+      signInForceRedirectUrl='/home'
+      appearance={{
+        cssLayerName: 'clerk',
+      }}
+    >
       <Provider store={store}>
         <RouterProvider router={router} />
         <Toaster

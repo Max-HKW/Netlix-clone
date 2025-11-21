@@ -5,6 +5,7 @@ import { NavLink, useLocation, Link } from 'react-router';
 import clsx from 'clsx';
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
+import { SignOutButton } from '@clerk/clerk-react';
 
 /**
  * Components
@@ -41,7 +42,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-0 transition-all duration-150">
       {/* Container */}
-      <div className="px-8 py-6 mx-auto max-w-7xl xl:max-w-[1700px] flex items-center justify-between gap-12">
+      <nav className="px-8 py-6 mx-auto max-w-7xl xl:max-w-[1700px] flex items-center justify-between gap-12">
         {/* Logo */}
         <Link to="/">
           <img
@@ -104,8 +105,13 @@ const Header = () => {
             <Menu size={26} />
           </button>
           <SearchBar />
+          <SignOutButton>
+            <button className="cursor-pointer bg-accent hover:bg-accent/80 text-white font-semibold py-2 px-4 rounded shadow transition-colors duration-200">
+              Esci
+            </button>
+          </SignOutButton>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile Navigation */}
       <div

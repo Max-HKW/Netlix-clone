@@ -22,15 +22,9 @@ export default function ErrorPage({ statusCode = 404, message = "Pagina non trov
 
         {/* Pulsanti */}
         <div className="flex items-center justify-center gap-3 pt-3">
-          <button
-            className="px-4 py-2 rounded-md bg-red-700 hover:bg-red-600 transition font-medium"
-          >
-            Riprova
-          </button>
-
           <a
             href={homeHref}
-            className="px-4 py-2 rounded-md border border-white/20 hover:bg-white/10 transition font-medium"
+            className="px-4 py-2 rounded-md bg-accent hover:bg-accent/80 transition font-medium"
           >
             Home
           </a>

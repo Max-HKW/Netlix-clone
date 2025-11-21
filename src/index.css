@@ -41,7 +41,6 @@ body {
   font-family: var(--font-base);
 }
 
-
 .swiper-button-next,
 .swiper-button-prev,
 .swiper-button-next::after,
@@ -69,4 +68,23 @@ body {
 .netflix-scroll {
   scrollbar-width: thin;
   scrollbar-color: #e50914 rgba(255, 255, 255, 0.05);
+}
+
+ 
+/* Clerck classes */
+
+.cl-internal-1q4rk2m {
+  color: white
+}
+
+.cl-internal-fcx671 {
+  display: none;
+}
+
+.cl-dividerText {
+  color: white;
+}
+
+.cl-formFieldLabel {
+  color: white;
 }

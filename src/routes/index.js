@@ -7,6 +7,7 @@ import { createBrowserRouter } from 'react-router';
  * Components
  */
 import RootLayout from '../components/layout/RootLayout';
+import AuthLayout from '../components/layout/AuthLayout';
 
 /**
  * Pages
@@ -18,15 +19,37 @@ import Movies from '../pages/Movies';
 import MovieDetails from '../pages/MovieDetails';
 import TvDetails from '../pages/TvDetails';
 import ErrorPage from '../pages/ErrorPage';
+import LandingPage from '../pages/LandingPage';
+import LoginPage from '../pages/LoginPage';
+import SignUpPage from '../pages/SignUpPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    Component: RootLayout,
+    Component: AuthLayout,
     ErrorBoundary: ErrorPage,
     children: [
       {
         index: true,
+        Component: LandingPage,
+      },
+      {
+        path: 'login',
+        Component: LoginPage,
+      },
+      {
+        path: 'signup',
+        Component: SignUpPage,
+      },
+    ],
+  },
+
+  {
+    Component: RootLayout,
+    ErrorBoundary: ErrorPage,
+    children: [
+      {
+        path: '/home',
         Component: Home,
       },
       {
@@ -36,7 +59,7 @@ const router = createBrowserRouter([
           {
             path: ':id',
             Component: TvDetails,
-          }
+          },
         ],
       },
       {
