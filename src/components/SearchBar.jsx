@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router';
-import { Search, X } from 'lucide-react';
+import { Search, X, ImageOff } from 'lucide-react';
 import { searchContent } from '../features/search/searchSlice';
 0;
 
@@ -125,11 +125,17 @@ const SearchBar = () => {
                   setQuery('');
                 }}
               >
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${r.poster_path}`}
-                  className="w-12 h-16 object-cover rounded"
-                  alt={title}
-                />
+                {r.poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w200${r.poster_path}`}
+                    className="w-12 h-16 object-cover rounded"
+                    alt={title}
+                  />
+                ) : (
+                  <div className="w-12 h-16 border border-white/10 rounded flex items-center justify-center bg-white/5">
+                    <ImageOff className="w-4 h-4 text-white/40" />
+                  </div>
+                )}
                 <div className="text-white">
                   <p className="font-medium">{title}</p>
                   <span className="text-gray-400 text-sm uppercase">
