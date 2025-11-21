@@ -71,7 +71,7 @@ const SearchBar = () => {
   return (
     <div
       ref={wrapperRef}
-      className="relative mb-8"
+      className="relative"
     >
       {!open && (
         <button
@@ -83,7 +83,7 @@ const SearchBar = () => {
       )}
 
       {open && (
-        <div className="flex items-center gap-2 bg-black/80 backdrop-blur-xl px-4 py-2 rounded-md border border-white/20 absolute right-0 top-0">
+        <div className="flex items-center gap-2 bg-black/80 backdrop-blur-xl px-4 py-2 rounded-md border border-white/20 absolute right-0 top-15 md:-top-5">
           <Search className="text-gray-400" />
           <input
             autoFocus

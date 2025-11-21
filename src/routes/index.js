@@ -17,11 +17,13 @@ import TvSeries from '../pages/TvSeries';
 import Movies from '../pages/Movies';
 import MovieDetails from '../pages/MovieDetails';
 import TvDetails from '../pages/TvDetails';
+import ErrorPage from '../pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     Component: RootLayout,
+    ErrorBoundary: ErrorPage,
     children: [
       {
         index: true,
