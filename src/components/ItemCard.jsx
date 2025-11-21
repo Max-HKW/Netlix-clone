@@ -41,7 +41,7 @@ const ItemCard = ({ item, type = 'movie' }) => {
           <button
             type="button"
             aria-label="Aggiungi ai preferiti"
-            className="p-3 rounded-full bg-white/20 hover:bg-white/40 transition absolute top-2 right-2 pointer-events-auto"
+            className="p-3 rounded-full bg-white/20 hover:bg-white/40 transition absolute top-2 right-2 pointer-events-auto cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               if (isFavourite) toast.error('Rimosso dai preferiti');

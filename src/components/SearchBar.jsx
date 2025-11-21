@@ -71,12 +71,12 @@ const SearchBar = () => {
   return (
     <div
       ref={wrapperRef}
-      className="relative"
+      className="relative mb-8"
     >
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="text-gray-300 hover:text-white transition-colors"
+          className="text-gray-300 hover:text-white transition-colors cursor-pointer"
         >
           <Search size={24} />
         </button>
