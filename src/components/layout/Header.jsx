@@ -44,7 +44,7 @@ const Header = () => {
       {/* Container */}
       <nav className="px-8 py-6 mx-auto max-w-7xl xl:max-w-[1700px] flex items-center justify-between gap-12">
         {/* Logo */}
-        <Link to="/">
+        <Link to="/home">
           <img
             src={logo}
             alt="Netflix clone logo"

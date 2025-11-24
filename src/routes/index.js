@@ -49,7 +49,7 @@ const router = createBrowserRouter([
     ErrorBoundary: ErrorPage,
     children: [
       {
-        path: '/home',
+        path: 'home',
         Component: Home,
       },
       {
