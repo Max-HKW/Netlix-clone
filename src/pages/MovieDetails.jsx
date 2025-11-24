@@ -1,9 +1,10 @@
 /**
  * Node modules
  */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 
 /**
  * Fetching funcions
@@ -15,6 +16,16 @@ import { fetchDetails } from '../features/details/detailsSlice';
  */
 import Loader from '../components/Loader';
 
+/**
+ * Actions
+ */
+import { toggleFavourites } from '../features/favourites/favouritesSlice';
+
+/**
+ * Icons
+ */
+import { Heart } from 'lucide-react';
+
 const MovieDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -24,6 +35,9 @@ const MovieDetails = () => {
     status,
     error,
   } = useSelector((state) => state.details);
+
+  const favourites = useSelector((state) => state.favourites.list);
+  const isFavourite = favourites.some((fav) => fav.id === details.id);
 
   useEffect(() => {
     dispatch(fetchDetails({ type: 'movie', id }));
@@ -56,7 +70,29 @@ const MovieDetails = () => {
         <div className="absolute inset-0 bg-linear-to-t from-black via-black/60 to-transparent">
           <div className="container mx-auto px-4 h-full flex items-end pb-16">
             <div className="text-white max-w-3xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
+              <div className="flex items-baseline gap-6">
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
+                <button
+                className=" transition pointer-events-auto cursor-pointer"
+                  aria-label="Aggiungi ai preferiti"
+                  onClick={() => {
+                    if (isFavourite) toast.error('Rimosso dai preferiti');
+                    else toast.success('Aggiunto ai preferiti');
+                    dispatch(toggleFavourites(details));
+                  }}
+                  
+                >
+                  <Heart
+                    size={32}
+                    className={`transition-colors duration-150 ${
+                      isFavourite
+                        ? 'text-pink-500'
+                        : 'text-white hover:text-pink-500'
+                    }`}
+                    fill={isFavourite ? 'currentColor' : 'transparent'}
+                  />
+                </button>
+              </div>
               <div className="flex items-center gap-4 text-sm mb-4">
                 <span>{new Date(releaseDate).getFullYear()}</span>
                 {details.runtime && (

@@ -88,7 +88,7 @@ const ItemCard = ({ item, type = 'movie' }) => {
           src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
           alt={title}
           loading="lazy"
-          className="w-full h-auto object-cover aspect-video"
+          className="w-full h-auto object-cover aspect-2/3"
         />
       </Link>
     </figure>
