@@ -43,7 +43,7 @@ const Header = () => {
 
   const location = useLocation();
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-0 transition-all duration-150">
+    <header className="fixed top-0 left-0 w-full z-1000 bg-black/50 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-0 transition-all duration-150">
       {/* Container */}
       <nav className="px-8 py-6 mx-auto max-w-7xl xl:max-w-[1700px] flex items-center justify-between gap-12">
         {/* Logo */}
