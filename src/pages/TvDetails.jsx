@@ -37,7 +37,7 @@ const TvDetails = () => {
   } = useSelector((state) => state.details);
 
   const favourites = useSelector((state) => state.favourites.list);
-  const isFavourite = favourites.some((fav) => fav.id === details.id);
+  const isFavourite = favourites.some((fav) => fav.id === details?.id);
 
   useEffect(() => {
     dispatch(fetchDetails({ type: 'tv', id }));
