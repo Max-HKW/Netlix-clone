@@ -31,7 +31,7 @@ const ItemCard = ({ item, type = 'movie' }) => {
     type === 'movie' ? `/film/${item.id}` : `/serie-tv/${item.id}`;
   return (
     <figure
-      className="relative rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-50 max-w-md mx-auto"
+      className="relative rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-50 max-w-xs mx-auto"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -88,7 +88,7 @@ const ItemCard = ({ item, type = 'movie' }) => {
           src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
           alt={title}
           loading="lazy"
-          className="w-full h-auto object-cover aspect-video"
+          className="w-full h-auto object-cover aspect-[2/3]"
         />
       </Link>
     </figure>
