@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { SignOutButton } from '@clerk/clerk-react';
+import { useSelector } from 'react-redux';
 
 /**
  * Components
@@ -29,6 +30,8 @@ import { Search, Bell, Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const favourites = useSelector((state) => state.favourites.list);
 
   useEffect(() => {
     const handleResize = () => {
@@ -62,6 +65,8 @@ const Header = () => {
               (to === '/film' && location.pathname.startsWith('/film/')) ||
               (to === '/serie-tv' &&
                 location.pathname.startsWith('/serie-tv/'));
+
+            const isMyList = label === 'La mia lista';
             return (
               <li
                 key={to}
@@ -76,7 +81,7 @@ const Header = () => {
                     )
                   }
                 >
-                  {label}
+                  <span>{label}</span>
                   {isActive && (
                     <motion.div
                       layoutId="underline"
@@ -89,6 +94,11 @@ const Header = () => {
                     />
                   )}
                 </NavLink>
+                {isMyList && favourites.length > 0 && (
+                  <div className="absolute bg-accent w-6 h-6 rounded-full bottom-3 text-sm -right-8 flex items-center justify-center">
+                    {favourites.length}
+                  </div>
+                )}
               </li>
             );
           })}
@@ -129,6 +139,7 @@ const Header = () => {
               (to === '/film' && location.pathname.startsWith('/film/')) ||
               (to === '/serie-tv' &&
                 location.pathname.startsWith('/serie-tv/'));
+            const isMyList = label === 'La mia lista';
             return (
               <li
                 key={to}
@@ -142,7 +153,7 @@ const Header = () => {
                       isActive && 'text-white font-semibold'
                     )
                   }
-                  onClick={() => setIsOpen(false)} // chiudi menu al click
+                  onClick={() => setIsOpen(false)} 
                 >
                   {label}
                   {isActive && (
@@ -157,6 +168,11 @@ const Header = () => {
                     />
                   )}
                 </NavLink>
+                {isMyList && favourites.length > 0 && (
+                  <div className="absolute bg-accent w-6 h-6 rounded-full bottom-3 text-sm -right-8 flex items-center justify-center">
+                    {favourites.length}
+                  </div>
+                )}
               </li>
             );
           })}
