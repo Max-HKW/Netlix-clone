@@ -21,6 +21,58 @@ Offre autenticazione completa tramite **Clerk**, gestione avanzata dello stato g
 
 ---
 
+## 📦 Librerie esterne utilizzate e motivazioni
+
+### React Router
+
+  - Perché: Gestire le rotte dell’applicazione in modo dichiarativo, supportando parametri dinamici (:id) e nested routes.
+
+  - Vantaggio: Navigazione fluida senza ricaricare la pagina, gestione semplice di layout diversi (ad esempio AuthLayout vs RootLayout).
+
+### Redux Toolkit
+
+  - Perché: Gestire lo stato globale dell’app, come film, serie TV e lista preferiti, in modo scalabile e prevedibile.
+
+  - Vantaggio: Riduce boilerplate rispetto a Redux puro e include middleware integrati per async actions (come fetch di dati da TMDB).
+
+### react-hot-toast
+
+  - Perché: Mostrare notifiche di successo o errore all’utente in modo semplice e personalizzabile.
+
+  - Vantaggio: Feedback immediato all’utente per azioni come aggiunta/rimozione dai preferiti.
+
+### Clerk
+
+  - Perché: Gestire autenticazione e registrazione degli utenti con login sicuro e protetto.
+
+  - Vantaggio: Implementazione rapida di auth completa senza dover scrivere backend complesso.
+
+### Swiper
+
+  - Perché: Creare slider/carousel per film e serie TV simile a Netflix.
+
+  - Vantaggio: Gestione responsive e navigazione touch/desktop pronta all’uso con effetti fluidi.
+
+### Lucide React
+
+  - Perché: Icone vettoriali leggere per pulsanti, navigazione e UI in generale.
+
+  - Vantaggio: Facile integrazione con React, personalizzabile via CSS.
+
+### clsx
+
+  - Perché: Gestire classi CSS condizionali in modo pulito e leggibile.
+
+  - Vantaggio: Evita concatenazioni lunghe e poco leggibili.
+
+### Tailwind CSS
+
+  - Perché: Stile rapido e responsive direttamente in JSX con classi utility.
+
+  - Vantaggio: Velocizza lo sviluppo UI senza scrivere CSS separato, perfetto per layout dinamici e responsive.
+
+---
+
 # ⭐ Funzionalità principali del progetto
 
 ## 🔐 Autenticazione Clerk (professionale e sicura)
