@@ -24,6 +24,7 @@ Offre autenticazione completa tramite **Clerk**, gestione avanzata dello stato g
 # ⭐ Funzionalità principali del progetto
 
 ## 🔐 Autenticazione Clerk (professionale e sicura)
+
 - Login e registrazione tramite hosted UI di Clerk
 
 - Protezione automatica delle rotte tramite
@@ -83,6 +84,7 @@ Nested routes per film e serie
 ```
 
 ## 🏛️ Redux Toolkit (Store Globale)
+
 ### 📌 Features:
 
 - moviesSlice
