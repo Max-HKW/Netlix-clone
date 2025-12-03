@@ -6,8 +6,7 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router';
 import { Provider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
-import { ClerkProvider } from '@clerk/clerk-react';
-import { itIT } from '@clerk/localizations';
+
 
 /**
  * Store
@@ -24,25 +23,11 @@ import './index.css';
  */
 import router from './routes';
 
-/**
- * Keys
- */
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
-if (!PUBLISHABLE_KEY) {
-  throw new Error('Missing Publishable Key');
-}
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ClerkProvider
-      publishableKey={PUBLISHABLE_KEY}
-      localization={itIT}
-      signInForceRedirectUrl='/home'
-      appearance={{
-        cssLayerName: 'clerk',
-      }}
-    >
+
       <Provider store={store}>
         <RouterProvider router={router} />
         <Toaster
@@ -72,6 +57,6 @@ createRoot(document.getElementById('root')).render(
           }}
         />
       </Provider>
-    </ClerkProvider>
+    
   </StrictMode>
 );

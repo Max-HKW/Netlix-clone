@@ -26,30 +26,11 @@ import SignUpPage from '../pages/SignUpPage';
 const router = createBrowserRouter([
   {
     path: '/',
-    Component: AuthLayout,
-    ErrorBoundary: ErrorPage,
-    children: [
-      {
-        index: true,
-        Component: LandingPage,
-      },
-      {
-        path: 'login',
-        Component: LoginPage,
-      },
-      {
-        path: 'signup',
-        Component: SignUpPage,
-      },
-    ],
-  },
-
-  {
     Component: RootLayout,
     ErrorBoundary: ErrorPage,
     children: [
-      {
-        path: 'home',
+       {
+        index: true,
         Component: Home,
       },
       {
